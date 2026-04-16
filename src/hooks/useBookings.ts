@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Booking, BookingStatus } from '@/types/database';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { API_URL } from "./config";
 
 export const useBookings = () => {
   const { user, session } = useAuth();
@@ -11,7 +12,7 @@ export const useBookings = () => {
     queryFn: async () => {
       if (!user || !session) return [];
 
-      const res = await fetch('/api/bookings', {
+      const res = await fetch(`${API_URL}/api/bookings`, {
         headers: {
           Authorization: `Bearer ${session.access_token}`,
         },
@@ -42,7 +43,7 @@ export const useAllBookings = () => {
     queryFn: async () => {
       if (!session) return [];
       
-      const res = await fetch('/api/bookings', {
+      const res = await fetch(`${API_URL}/api/bookings`, {
         headers: {
           Authorization: `Bearer ${session.access_token}`,
         },
@@ -83,7 +84,7 @@ export const useCreateBooking = () => {
     }) => {
       if (!user || !session) throw new Error('You must be logged in to book');
 
-      const res = await fetch('/api/bookings', {
+      const res = await fetch(`${API_URL}/api/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -117,7 +118,7 @@ export const useCancelBooking = () => {
     mutationFn: async (bookingId: string) => {
       if (!session) throw new Error('Unauthorized');
       
-      const res = await fetch(`/api/bookings/${bookingId}`, {
+      const res = await fetch(`${API_URL}/api/bookings/${bookingId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${session.access_token}`,
@@ -147,7 +148,7 @@ export const useUpdateBookingStatus = () => {
     mutationFn: async ({ bookingId, status }: { bookingId: string; status: BookingStatus }) => {
       if (!session) throw new Error('Unauthorized');
 
-      const res = await fetch(`/api/bookings/${bookingId}/status`, {
+      const res = await fetch(`${API_URL}/api/bookings/${bookingId}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
