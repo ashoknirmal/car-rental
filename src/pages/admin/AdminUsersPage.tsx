@@ -4,6 +4,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/contexts/AuthContext';
+import { API_URL } from "./config";
 
 const AdminUsersPage = () => {
   const { session } = useAuth() as any;
@@ -12,7 +13,7 @@ const AdminUsersPage = () => {
     queryKey: ['admin-profiles'],
     queryFn: async () => {
       if (!session) return [];
-      const res = await fetch('/api/users', {
+      const res = await fetch(`${API_URL}/api/users`, {
         headers: {
           Authorization: `Bearer ${session.access_token}`,
         },
