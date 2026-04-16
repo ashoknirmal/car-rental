@@ -8,6 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { API_URL } from "./config";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const ProfilePage = () => {
 
       setIsLoading(true);
       try {
-        const res = await fetch('/api/auth/profile', {
+        const res = await fetch(`${API_URL}/api/auth/profile`, {
           headers: {
             Authorization: `Bearer ${session.access_token}`,
           },
@@ -70,7 +71,7 @@ const ProfilePage = () => {
         phone_number: profile.phone,
       };
 
-      const res = await fetch('/api/auth/profile', {
+      const res = await fetch(`${API_URL}/api/auth/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
