@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { Car, CarFilters } from '@/types/database';
+import { API_URL } from "./config";
 
 const fetchCars = async (): Promise<Car[]> => {
-  const res = await fetch('/api/cars');
+  const res = await fetch(`${API_URL}/api/cars`);
   if (!res.ok) throw new Error('Failed to fetch cars');
   return res.json();
 };
@@ -42,7 +43,7 @@ export const useCar = (id: string) => {
   return useQuery({
     queryKey: ['car', id],
     queryFn: async () => {
-      const res = await fetch(`/api/cars/${id}`);
+      const res = await fetch(`${API_URL}/api/cars/${id}`);
       if (!res.ok) throw new Error('Failed to fetch car');
       return res.json() as Promise<Car>;
     },
