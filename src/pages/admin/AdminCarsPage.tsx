@@ -3,6 +3,8 @@ import { Plus, Pencil, Trash2, Car } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { API_URL } from "./config";
+
 import {
   Dialog,
   DialogContent,
@@ -122,7 +124,7 @@ const AdminCarsPage = () => {
       };
 
       if (editingCar) {
-        const res = await fetch(`/api/cars/${editingCar.id}`, {
+        const res = await fetch(`${API_URL}/api/cars/${editingCar.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -136,7 +138,7 @@ const AdminCarsPage = () => {
         }
         toast.success('Car updated successfully');
       } else {
-        const res = await fetch('/api/cars', {
+        const res = await fetch(`${API_URL}/api/cars`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -165,7 +167,7 @@ const AdminCarsPage = () => {
     if (!deletingCar) return;
 
     try {
-      const res = await fetch(`/api/cars/${deletingCar.id}`, {
+      const res = await fetch(`${API_URL}/api/cars/${deletingCar.id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${session.access_token}`,
