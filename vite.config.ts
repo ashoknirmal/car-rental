@@ -12,7 +12,7 @@ export default defineConfig(() => ({
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://car-rental-server-9byk.onrender.com',
         changeOrigin: true,
       },
     },
