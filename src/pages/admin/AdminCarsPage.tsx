@@ -3,7 +3,7 @@ import { Plus, Pencil, Trash2, Car } from 'lucide-react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { API_URL } from "./config";
+import { API_URL } from "@/config";
 
 import {
   Dialog,

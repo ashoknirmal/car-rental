@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Booking, BookingStatus } from '@/types/database';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
-import { API_URL } from "./config";
+import { API_URL } from "@/config";
 
 export const useBookings = () => {
   const { user, session } = useAuth();

@@ -18,6 +18,7 @@ import { useCar } from '@/hooks/useCars';
 import { useCreateBooking } from '@/hooks/useBookings';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
+import { API_URL } from "@/config";
 
 const categoryColors: Record<string, string> = {
   suv: 'bg-blue-100 text-blue-700',
@@ -84,7 +85,7 @@ const CarDetailPage = () => {
       });
 
       if (paymentMethod === 'Online Payment') {
-        const stripeSessionResponse = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/payment/create-checkout-session`, {
+        const stripeSessionResponse = await fetch(`${API_URL}/api/payment/create-checkout-session`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

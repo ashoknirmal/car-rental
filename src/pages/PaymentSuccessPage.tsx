@@ -4,6 +4,7 @@ import { CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { API_URL } from "@/config";
 
 const PaymentSuccessPage = () => {
   const [searchParams] = useSearchParams();
@@ -21,7 +22,7 @@ const PaymentSuccessPage = () => {
 
     const verifyPayment = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/payment/verify-session`, {
+        const response = await fetch(`${API_URL}/api/payment/verify-session`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/contexts/AuthContext';
-import { API_URL } from "./config";
+import { API_URL } from "@/config";
 
 const AdminUsersPage = () => {
   const { session } = useAuth() as any;

@@ -10,12 +10,6 @@ export default defineConfig(() => ({
     hmr: {
       overlay: false,
     },
-    proxy: {
-      '/api': {
-        target: 'https://car-rental-server-9byk.onrender.com',
-        changeOrigin: true,
-      },
-    },
   },
   plugins: [react()],
   resolve: {

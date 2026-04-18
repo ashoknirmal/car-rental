@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
-import { API_URL } from "./config";
+import { API_URL } from "@/config";
 
 const ProfilePage = () => {
   const navigate = useNavigate();

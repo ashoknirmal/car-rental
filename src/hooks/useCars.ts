@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Car, CarFilters } from '@/types/database';
-import { API_URL } from "./config";
+import { API_URL } from "@/config";
 
 const fetchCars = async (): Promise<Car[]> => {
   const res = await fetch(`${API_URL}/api/cars`);
